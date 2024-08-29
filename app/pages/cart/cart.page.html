@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Shopping Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-cart-item *ngFor="let item of cartItems" [item]="item" (onRemove)="removeItem($event)"></app-cart-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Total:</ion-label>
+    <ion-note slot="end">{{ total | currency:'USD' }}</ion-note>
+  </ion-item>
+
+  <ion-button expand="block" (click)="checkout()" [disabled]="cartItems.length === 0">
+    Checkout
+  </ion-button>
+</ion-content>

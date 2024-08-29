@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>E-Commerce App</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart" routerDirection="forward">
+        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+        <ion-label class="ion-hide-lg-up"></ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-select [(ngModel)]="selectedCategory" (ionChange)="onCategoryChange()">
+    <ion-select-option value="">All Categories</ion-select-option>
+    <ion-select-option *ngFor="let category of categories" [value]="category">
+      {{ category }}
+    </ion-select-option>
+  </ion-select>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of products">
+        <app-product-card [product]="product"></app-product-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
